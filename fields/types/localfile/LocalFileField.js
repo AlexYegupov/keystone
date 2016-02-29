@@ -100,10 +100,15 @@ module.exports = Field.create({
 	renderFileDetails: function (add) {
 		var values = null;
 
+    // AY !!
+    var fileName = '/local/' + this.getFilename()
 		if (this.hasFile() && !this.state.removeExisting) {
 			values = (
 				<div className='file-values'>
-					<div className='field-value'>{this.getFilename()}</div>
+					<div className='field-value'>{fileName}</div>
+          <img style={{height: '100px', width: 'auto', display: 'inline-block'}}
+               src={fileName} alt={fileName}
+          />
 				</div>
 			);
 		}

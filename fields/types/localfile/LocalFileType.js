@@ -35,6 +35,10 @@ function localfile(list, path, options) {
 	if (options.overwrite !== false) {
 		options.overwrite = true;
 	}
+
+  // AY
+  this.autoCleanup = options.autoCleanup || false
+  this._properties = ['autoCleanup']
 	
 	localfile.super_.call(this, list, path, options);
 	
