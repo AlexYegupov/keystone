@@ -38,6 +38,8 @@ mixin column(list, col, item)
 			+column_color(value)
 		else if col.type == 'localfile'
 			+column_html(value)
+		else if col.type == 'money'
+			+column_money(value)
 		else
 			+column_basic(value)
 
@@ -59,6 +61,9 @@ mixin column_html(value)
 
 mixin column_basic(value)
 	div.col-value= value
+
+mixin column_money(value)
+	div.col-value.money= value
 
 mixin column_color(value)
 	div.col-value
