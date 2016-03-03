@@ -21,8 +21,12 @@ var Item = React.createClass({
 
 		var body = [];
 
-		body.push(<img className='file-icon' src={'/keystone/images/icons/32/' + iconName + '.png'} />);
-		body.push(<span className='file-filename'>{filename}</span>);
+    var fullFilename = '/local/' + filename
+    //body.push(<img className='file-icon' src={'/keystone/images/icons/32/' + iconName + '.png'} />);
+    body.push(<span className='file-filename'>{ fullFilename }</span>); // AY: display full filename (to use in html edit)
+    body.push(
+      <img style={{height: '100px', width: 'auto', display: 'inline-block'}}
+           src={fullFilename} alt={ fullFilename } />);  // AY: hack: display image
 
 		if (this.props.size) {
 			body.push(<span className='file-size'>{bytes(this.props.size)}</span>);
@@ -36,7 +40,7 @@ var Item = React.createClass({
 
 		if (!this.props.isQueued) {
 			var actionLabel = this.props.deleted ? 'undo' : 'remove';
-			body.push(<span className='file-action' onClick={this.props.toggleDelete}>{actionLabel}</span>);
+      body.push(<span className='file-action' onClick={this.props.toggleDelete}>{actionLabel}</span>);
 		}
 
 		var itemClassName = 'file-item';
